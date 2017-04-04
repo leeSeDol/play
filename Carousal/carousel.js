@@ -20,6 +20,36 @@
 		this.setPosterPos();
 	};
 	Carousel.prototype={
+		//旋转
+		carouseRotate:function(dir){
+			var _this_=this;
+			var zIndexArr=[];
+			if(dir=="left"){
+				this.posterItems.each(function(){
+					var self=$(this);
+					var $prev=self.prev().get(0) ? self.prev():_this_.posterLastItem;
+					var width=$prev.width(),
+						height=$prev.height(),
+						opacity=$prev.css("opacity"),
+						zIndex=$prev.css("zIndex"),
+						left=$prev.css("left"),
+						top=$prev.css("top");
+					zIndexArr.push(zIndex);
+					self.animate({
+						width:width,
+						height:height,
+						opacity:opacity,
+						left:left,
+						top:top
+					});
+				});
+				this.posterItems.each(function(i){
+					$(this).css("zIndex",zIndexArr[i]);
+				});
+			}else if(dir=="right"){
+
+			}
+		},
 		//设置剩余的帧的位置关系
 		setPosterPos:function(){
 			var self = this;
