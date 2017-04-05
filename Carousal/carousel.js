@@ -6,6 +6,9 @@
 		this.posterItems=$(".poster-list li.poster-item");
 		this.nextBtn=$(".poster-next-btn");
 		this.prevBtn=$(".poster-prev-btn");
+		this.posterFirstItem=this.posterItems.first();
+		this.posterLastItem=this.posterItems.last();
+		this.rotateFlag=true;
 		this.setting={
 			"width":800,
 			"height":270,
@@ -18,6 +21,18 @@
 		$.extend(this.setting,this.getSetting());
 		this.setSettingValue();
 		this.setPosterPos();
+		this.nextBtn.click(function(){
+			if(self.rotateFlag==true){
+				self.carouseRotate("left");
+				self.rotateFlag=false;
+			}
+		});
+		this.prevBtn.click(function(){
+			if(self.rotateFlag==true){
+				self.carouseRotate("right");
+				self.rotateFlag=false;
+			}
+		});
 	};
 	Carousel.prototype={
 		//旋转
@@ -47,8 +62,31 @@
 					$(this).css("zIndex",zIndexArr[i]);
 				});
 			}else if(dir=="right"){
-
+				this.posterItems.each(function(){
+					var self=$(this);
+					var $next=self.next().get(0) ? self.next() : _this_.posterFirstItem;
+					var width=$next.width(),
+						height=$next.height(),
+						opacity=$next.css("opacity"),
+						zIndex=$next.css("zIndex"),
+						left=$next.css("left"),
+						top=$next.css("top");
+					zIndexArr.push(zIndex);
+					self.animate({
+						width:width,
+						height:height,
+						opacity:opacity,
+						left:left,
+						top:top
+					});
+				});
+				this.posterItems.each(function(i){
+					$(this).css("zIndex",zIndexArr[i]);
+				});
 			}
+			setTimeout(function(){
+				_this_.rotateFlag=true;
+			},500);
 		},
 		//设置剩余的帧的位置关系
 		setPosterPos:function(){
