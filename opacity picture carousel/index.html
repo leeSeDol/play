@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>index</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="container">
+		<div class="photos" id="photos">
+			<div class="photo" id="photo_{{index}}" index="{{index}}">
+				<img src="images/1.jpg" alt="">
+			</div>
+		</div>
+		<div class="buttons">
+			<span index="1" onselectstart="return false;"></span>
+			<span index="2" onselectstart="return false;"></span>
+			<span index="3" onselectstart="return false;"></span>
+			<span index="4" onselectstart="return false;"></span>
+			<span index="5" onselectstart="return false;"></span>
+		</div>
+		<div class="arrow prev_btn" >&lt</div>
+		<div class="arrow next_btn" >&gt</div>
+	</div>
+<script>
+	var data=[
+		{img:1},
+		{img:2},
+		{img:3},
+		{img:4},
+		{img:5}
+	];
+	//通用函数
+	function $(id){
+		if(id.substr(1)=="."){
+			document.getElementsByClassName(id.substr(1));
+		}else{
+			return document.getElementById(id);
+		}
+	}
+	function addPhotos(){
+		var _photos=[];
+		var template_photo=$(".photos")[0].innerHTML
+												.replace(/^\s*/,'')
+												.replace(/\s*$/,'');
+		for(s in data){
+			var _template=template_photo.innerHTML.replace(/{{index}}/g,data[s].img);
+			_photos.push(_template);
+		}
+		$(".photos")[0].innerHTML=_photos.join('');
+	}
+	window.onload=function(){
+		addPhotos();
+		var prevBtn=$(".prev_btn")[0];
+		var nextBtn=$(".next_btn")[0];
+
+	};
+</script>	
+</body>
+</html>
