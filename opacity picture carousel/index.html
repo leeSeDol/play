@@ -13,11 +13,11 @@
 			</div>
 		</div>
 		<div class="buttons">
-			<span index="1" onselectstart="return false;"></span>
-			<span index="2" onselectstart="return false;"></span>
-			<span index="3" onselectstart="return false;"></span>
-			<span index="4" onselectstart="return false;"></span>
-			<span index="5" onselectstart="return false;"></span>
+			<span index="1" onclick="thisClick(1)" onselectstart="return false;"></span>
+			<span index="2" onclick="thisClick(2)" onselectstart="return false;"></span>
+			<span index="3" onclick="thisClick(3)" onselectstart="return false;"></span>
+			<span index="4" onclick="thisClick(4)" onselectstart="return false;"></span>
+			<span index="5" onclick="thisClick(5)" onselectstart="return false;"></span>
 		</div>
 		<div class="arrow prev_btn" >&lt</div>
 		<div class="arrow next_btn" >&gt</div>
@@ -31,20 +31,38 @@
 		{img:5}
 	];
 	//通用函数
-	function $(id){
-		if(id.substr(1)=="."){
-			document.getElementsByClassName(id.substr(1));
-		}else{
-			return document.getElementById(id);
+function $(id){
+	if(id.substr(0,1)=="."){
+		document.getElementsByClassName(id.substr(1));
+	}else{
+		return document.getElementById(id);
+	}
+}
+function thisClick(n){
+	var photos=$(".photos")[0].getElementsByTagName("div");
+	var spans=$(".buttons")[0].getElementsByTagName("span");
+	for(var i=0;i<data.length;i++){
+		var cls=photos[i].className;
+		if(/photo_active/.test(cls)){
+			cls=cls.replace(/\s*photo_active\s*/,' ');
+			photos[i].className=cls;
+		}
+		var cls2=spans[i].className;
+		if(/on/.test(cls2)){
+			cls2=cls2.replace(/\s*on\s*/,' ');
+			spans[i].className=cls2;
 		}
 	}
+	photos[n-1].className+=' photo_active ';
+	spans[n-1].className+=' on ';
+}
 	function addPhotos(){
 		var _photos=[];
 		var template_photo=$(".photos")[0].innerHTML
 												.replace(/^\s*/,'')
 												.replace(/\s*$/,'');
 		for(s in data){
-			var _template=template_photo.innerHTML.replace(/{{index}}/g,data[s].img);
+			var _template=template_photo.replace(/{{index}}/g,data[s].img);
 			_photos.push(_template);
 		}
 		$(".photos")[0].innerHTML=_photos.join('');
@@ -53,7 +71,22 @@
 		addPhotos();
 		var prevBtn=$(".prev_btn")[0];
 		var nextBtn=$(".next_btn")[0];
-
+		var photoIndex=1;
+		nextBtn.onclick=function(){
+			photoIndex++;
+			if(photoIndex>5){
+				photoIndex=1;
+			}
+			thisClick(photoIndex);
+		};
+		prevBtn.onclick=function(){
+			photoIndex--;
+			if(photoIndex<1){
+				photoIndex=5;
+			}
+			thisClick(photoIndex);
+		};
+		thisClick(1);
 	};
 </script>	
 </body>
