@@ -9,7 +9,7 @@
 	<div class="container">
 		<div class="photos" id="photos">
 			<div class="photo" id="photo_{{index}}" index="{{index}}">
-				<img src="images/1.jpg" alt="">
+				<img src="images/{{index}}.jpg" alt="">
 			</div>
 		</div>
 		<div class="buttons">
@@ -33,7 +33,7 @@
 	//通用函数
 function $(id){
 	if(id.substr(0,1)=="."){
-		document.getElementsByClassName(id.substr(1));
+		return document.getElementsByClassName(id.substr(1));
 	}else{
 		return document.getElementById(id);
 	}
