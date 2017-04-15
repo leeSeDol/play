@@ -7,7 +7,16 @@
 		//保存body
 		this.bodyNode=$(document.body);
 		//this.renderDOM();
+		this.picViewArea	=this.popupWin.find("div.lightbox-pic-view");//图片预览区域
+		this.popupPic		=this.popupWin.find("img.lightbox-image");//图片
+		this.picCaptionArea =this.popupWin.find("div.lightbox-pic-caption");//图片描述区域
 
+		this.nextBtn 		=this.popupWin.find("div.lightbox-next-btn");
+		this.prevBtn 		=this.popupWin.find("div.lightbox-prev-btn");
+		this.closeBtn 		=this.popupWin.find("span.lightbox-close-btn");
+
+		this.captionText	=this.popupWin.find("p.lightbox-pic-desc");//图片描述
+		this.currentIndex	=this.popupWin.find("span.lightbox-of-index")//图片当前索引
 
 		this.groupName=null;
 		this.groupData=[];
@@ -20,7 +29,7 @@
 				//根据当前组名获取同一组数据
 				self.getGroup();
 			}
-
+			self.initPopup($(this));
 		});
 	};
 	Lightbox.prototype={
@@ -40,10 +49,6 @@
 			//插入到this.popupWin
 			this.popupWin.html(strDom);
 			this.bodyNode.append(this.popupMask,this.popupWin);
-		},
-		setGroup:function(){
-			
-
 		}
 	};
 	window["Lightbox"]=Lightbox;
