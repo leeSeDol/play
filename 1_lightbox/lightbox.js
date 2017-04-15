@@ -6,7 +6,8 @@
 		this.popupWin =$('<div id="G-lightbox-popup">');
 		//保存body
 		this.bodyNode=$(document.body);
-		//this.renderDOM();
+		//渲染剩余的DOM并插入到body
+		this.renderDOM();
 		this.picViewArea	=this.popupWin.find("div.lightbox-pic-view");//图片预览区域
 		this.popupPic		=this.popupWin.find("img.lightbox-image");//图片
 		this.picCaptionArea =this.popupWin.find("div.lightbox-pic-caption");//图片描述区域
@@ -33,6 +34,29 @@
 		});
 	};
 	Lightbox.prototype={
+		showMaskAndPopup:function(sourceSrc,currentId){
+			console.log(sourceSrc,currentId);
+		},
+		initPopup:function(currentObj){
+			var self=this,
+				sourceSrc=currentObj.attr("data-source"),
+				currentId=currentObj.attr("data-id");
+			this.showMaskAndPopup(sourceSrc,currentId);
+		},
+		getGroup:function(){
+			var self=this;
+			var groupList=this.bodyNode.find("*[data-group="+self.groupName+"]");
+			//清空groupData数组数据
+			self.groupData.length=0;
+			groupList.each(function(){
+				self.groupData.push({
+					src:$(this).attr("data-source"),
+					id:$(this).attr("data-id"),
+					caption:$(this).attr("data-caption")
+				});
+			});
+			//console.log(self.groupData);
+		},
 		renderDOM:function(){
 			var strDom='<div class="lightbox-pic-view">'+
 							'<span class="lightbox-btn lightbox-prev-btn "></span>'+
