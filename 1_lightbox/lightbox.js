@@ -35,7 +35,31 @@
 	};
 	Lightbox.prototype={
 		showMaskAndPopup:function(sourceSrc,currentId){
-			console.log(sourceSrc,currentId);
+			var self=this;
+			this.popupPic.hide();
+			this.picCaptionArea.hide();
+
+			this.popupMask.fadeIn();
+			var winWidth=$(window).width();
+			var winHeight=$(window).height();
+
+			this.picViewArea.css({
+				width:winWidth/2,
+				height:winHeight/2
+			});
+
+			this.popupWin.fadeIn();
+			var viewHeight = winHeight/2+10;
+			this.popupWin.css({
+				width:winWidth/2+10,
+				height:winHeight/2+10,
+				marginLeft:-(winWidth/2+10)/2,
+				top:-viewHeight
+			}).animate({
+				top:winHeight-viewHeight
+			},function(){
+				//
+			});
 		},
 		initPopup:function(currentObj){
 			var self=this,
