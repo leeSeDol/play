@@ -12,8 +12,8 @@
 		this.popupPic		=this.popupWin.find("img.lightbox-image");//图片
 		this.picCaptionArea =this.popupWin.find("div.lightbox-pic-caption");//图片描述区域
 
-		this.nextBtn 		=this.popupWin.find("div.lightbox-next-btn");
-		this.prevBtn 		=this.popupWin.find("div.lightbox-prev-btn");
+		this.nextBtn 		=this.popupWin.find("span.lightbox-next-btn");
+		this.prevBtn 		=this.popupWin.find("span.lightbox-prev-btn");
 		this.closeBtn 		=this.popupWin.find("span.lightbox-close-btn");
 
 		this.captionText	=this.popupWin.find("p.lightbox-pic-desc");//图片描述
@@ -22,7 +22,7 @@
 		this.groupName=null;
 		this.groupData=[];
 		//准备开发事件委托，获取组数据
-		this.bodyNode.delegate(".js-lightbox,[data-role='lightbox']","click",function(e){//delegate???
+		this.bodyNode.delegate(".js-lightbox,[data-role='lightbox']","click",function(e){
 			e.stopPropagation();
 			var currentGroupName=$(this).attr("data-group");
 			if(currentGroupName!=self.groupName){
@@ -34,6 +34,16 @@
 		});
 	};
 	Lightbox.prototype={
+		getIndexOf:function(currentId){
+			var index=0;
+			$(this.groupData).each(function(i){
+				index=i;
+				if(this.id===currentId){
+					return false;
+				}
+			});
+			return index;
+		},
 		showMaskAndPopup:function(sourceSrc,currentId){
 			var self=this;
 			this.popupPic.hide();
@@ -49,6 +59,7 @@
 			});
 
 			this.popupWin.fadeIn();
+
 			var viewHeight = winHeight/2+10;
 			this.popupWin.css({
 				width:winWidth/2+10,
@@ -60,6 +71,27 @@
 			},function(){
 				//
 			});
+
+			//根据当前点击的元素ID获取在当前组别里的索引
+			this.index = this.getIndexOf(currentId);
+			console.log(this.index);
+			var groupDataLength = this.groupData.length;
+			if(groupDataLength>0){
+				if(this.index===0){
+					this.prevBtn.addClass("disabled");
+					this.nextBtn.removeClass("disabled");
+				}else if(this.index===groupDataLength-1){
+					this.prevBtn.removeClass("disabled");
+					this.nextBtn.addClass("disabled");
+				}else{
+					this.prevBtn.removeClass("disabled");
+					this.nextBtn.removeClass("disabled");
+				}
+				if(this.index===0&&this.index===groupDataLength-1){
+					this.prevBtn.addClass("disabled");
+					this.nextBtn.addClass("disabled");
+				}
+			}
 		},
 		initPopup:function(currentObj){
 			var self=this,
