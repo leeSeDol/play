@@ -10,16 +10,20 @@
 	height:100%;
 	background-color: #899;
 	z-index:100;
+	opacity:0;
+	-webkit-transition:all linear 0.5s;
 }
 .popup{
 	position:absolute;
-	left:0;
-	top:0;
+	left:50%;
+	top:50%;
+	-webkit-transform:translate(-50%,-50%);
 	width:500px;
 	height:300px;
 	border:3px solid pink;
 	z-index:1001;
 	background-color: #000;
+	-webkit-transition:all linear 0.5s;
 }
 .popup span.btn{
 	background-color: pink;
@@ -45,4 +49,24 @@
 	height:30px;
 	background:url('close.png') no-repeat center center;
 	background-size:95%;
+}
+.login{
+	position:absolute;
+	top:10px;
+	right:5%;
+	width:50px;
+	height:20px;
+	background-color:rgba(30,45,67,0.2);
+	text-align:center;
+	border:3px solid #777;
+	box-shadow:0 0 3px rgba(30,45,45,1);
+	cursor:pointer;
+	z-index:1002;
+}
+.login:active{
+	box-shadow:0 0 0 rgba(30,45,45,1);
+}
+.login span{
+	font-size:14px;
+	font-family:"微软雅黑";
 }
