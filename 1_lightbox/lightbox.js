@@ -34,6 +34,30 @@
 		});
 	};
 	Lightbox.prototype={
+		loadPicSize:function(sourceSrc){
+			var self=this;
+			this.preLoadImg(sourceSrc,function(){
+				self.popupPic.attr("src",sourceSrc);
+				var picWidth=self.popupPic.width();
+				var picHeight=self.popupPic.height();
+				
+				self.changePic(picWidth,picHeight);
+			});
+		},
+		preLoadImg:function(src,callback){
+			var img=new Image();
+			if(!!window.ActiveXObject){
+				img.onreadystatechange=function(){
+					if(this.readyState=="complete"){
+						callback();
+					}
+				};	
+			}
+			img.onload=function(){
+				callback();
+			};
+			img.src=src;
+		},
 		getIndexOf:function(currentId){
 			var index=0;
 			$(this.groupData).each(function(i){
@@ -116,7 +140,7 @@
 		renderDOM:function(){
 			var strDom='<div class="lightbox-pic-view">'+
 							'<span class="lightbox-btn lightbox-prev-btn "></span>'+
-							'<img class="lightbox-image" src="images/2-2.jpg" width="100%" height="100%" alt="">'+
+							'<img class="lightbox-image" src="images/2-2.jpg" alt="">'+
 							'<span class="lightbox-btn lightbox-next-btn "></span>'+
 						'</div>'+
 						'<div class="lightbox-pic-caption">'+
