@@ -44,6 +44,32 @@
 				self.changePic(picWidth,picHeight);
 			});
 		},
+		changePic:function(width,height){
+			var self=this;
+			var winWidth=$(window).width();
+			var winHeight=$(window).height();
+
+			//如果图片的宽高大于浏览器视口的比例，就看下是否溢出
+			var scale=Math.min(winWidth/(width+10),winHeight/(height+10),1);
+			width=width*scale;
+			height=height*scale;
+			self.picViewArea.animate({
+				width:width-10,
+				height:height-10
+			});
+			self.popupWin.animate({
+				width:width,
+				height:height,
+				marginLeft:-width/2,
+				marginTop:-height/2+10
+			},function(){
+				self.popupPic.css({
+					width:width-10,
+					height:height-10
+				}).fadeIn();
+				self.picCaptionArea.fadeIn()
+			});
+		},
 		preLoadImg:function(src,callback){
 			var img=new Image();
 			if(!!window.ActiveXObject){
