@@ -69,6 +69,11 @@
 				}).fadeIn();
 				self.picCaptionArea.fadeIn()
 			});
+
+			//console.log(this.index);
+			//设置描述文字和当前索引
+			this.captionText.text(this.groupData[this.index].caption);
+			this.currentIndex.text("当前索引："+(this.index+1)+" of "+this.groupData.length);
 		},
 		preLoadImg:function(src,callback){
 			var img=new Image();
@@ -119,27 +124,37 @@
 			}).animate({
 				top:winHeight-viewHeight
 			},function(){
-				//
+				//加载图片
+				self.loadPicSize(sourceSrc);
 			});
 
 			//根据当前点击的元素ID获取在当前组别里的索引
 			this.index = this.getIndexOf(currentId);
-			console.log(this.index);
+			//console.log(this.index);
 			var groupDataLength = this.groupData.length;
 			if(groupDataLength>0){
+				
 				if(this.index===0){
+
 					this.prevBtn.addClass("disabled");
 					this.nextBtn.removeClass("disabled");
+
 				}else if(this.index===groupDataLength-1){
+
 					this.prevBtn.removeClass("disabled");
 					this.nextBtn.addClass("disabled");
+
 				}else{
+
 					this.prevBtn.removeClass("disabled");
 					this.nextBtn.removeClass("disabled");
+
 				}
-				if(this.index===0&&this.index===groupDataLength-1){
+				if(this.index===0 && this.index===groupDataLength-1){
+
 					this.prevBtn.addClass("disabled");
 					this.nextBtn.addClass("disabled");
+
 				}
 			}
 		},
