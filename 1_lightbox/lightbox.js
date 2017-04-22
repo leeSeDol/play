@@ -197,4 +197,4 @@
 		}
 	};
 	window["Lightbox"]=Lightbox;
-})(jQuery);
+})(jQuery); 
