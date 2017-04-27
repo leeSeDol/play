@@ -12,16 +12,18 @@
 	opacity:0.5;
 	filter:alpha(opacity=50%);
 	z-index:10000;
+	display:none;
 }
 #G-lightbox-popup{
 	position:fixed;
 	top:50%;
 	left:50%;
-	width:300px;
+	width:400px;
 	height:300px;
-	margin-left:-150px;
+	margin-left:-200px;
 	margin-top:-150px;
 	z-index:10001;
+	display:none;
 }
 #G-lightbox-popup .lightbox-pic-view{
 	position:relative;
@@ -37,7 +39,6 @@
 	height:100%;
 	text-align:center;
 	z-index:1;
-
 }
 #G-lightbox-popup .lightbox-pic-view .lightbox-prev-btn{
 	left:0;
@@ -63,6 +64,7 @@
 	background-color: rgba(0,0,0,0.5);
 }
 #G-lightbox-popup .lightbox-pic-caption .lightbox-caption-area{
+	color:rgba(255,255,255,0.5);;
 	padding:10px 5px;
 }
 #G-lightbox-popup .lightbox-pic-caption .lightbox-caption-area .lightbox-of-index{
@@ -75,4 +77,5 @@
 	top:13px;
 	right:10px;
 	background: url('icon/close.png') no-repeat center center;
+	z-index:2;
 }
