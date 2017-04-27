@@ -8,16 +8,16 @@
 		this.bodyNode=$(document.body);
 		//渲染剩余的DOM并插入到body
 		this.renderDOM();
-		this.picViewArea	=this.popupWin.find("div.lightbox-pic-view");//图片预览区域
-		this.popupPic		=this.popupWin.find("img.lightbox-image");//图片
+		this.picViewArea	=this.popupWin.find("div.lightbox-pic-view");	//图片预览区域
+		this.popupPic		=this.popupWin.find("img.lightbox-image");		//图片
 		this.picCaptionArea =this.popupWin.find("div.lightbox-pic-caption");//图片描述区域
 
 		this.nextBtn 		=this.popupWin.find("span.lightbox-next-btn");
 		this.prevBtn 		=this.popupWin.find("span.lightbox-prev-btn");
 		this.closeBtn 		=this.popupWin.find("span.lightbox-close-btn");
 
-		this.captionText	=this.popupWin.find("p.lightbox-pic-desc");//图片描述
-		this.currentIndex	=this.popupWin.find("span.lightbox-of-index")//图片当前索引
+		this.captionText	=this.popupWin.find("p.lightbox-pic-desc");		//图片描述
+		this.currentIndex	=this.popupWin.find("span.lightbox-of-index");	//图片当前索引
 
 		this.groupName=null;
 		this.groupData=[];
@@ -32,15 +32,86 @@
 			}
 			self.initPopup($(this));
 		});
+
+		//关闭弹出
+		this.popupMask.click(function(){
+			$(this).fadeOut();
+			self.popupWin.fadeOut();
+		});
+		this.closeBtn.click(function(){
+			self.popupMask.fadeOut();
+			self.popupWin.fadeOut();
+		});
+
+		this.flag=true;
+
+		this.nextBtn.hover(function(){
+			if(!$(this).hasClass("disabled") && self.groupData.length>1){
+				$(this).addClass("lightbox-next-btn-show");
+			}
+		},function(){
+			if(!$(this).hasClass("disabled") && self.groupData.length>1){
+				$(this).removeClass("lightbox-next-btn-show");
+			}
+		}).click(function(e){
+			if(!$(this).hasClass("disabled")&&self.flag){
+				self.flag=false;
+				e.stopPropagation();
+				self.goTo("next");
+			}
+		});
+
+		this.prevBtn.hover(function(){
+			if(!$(this).hasClass("disabled") && self.groupData.length>1){
+				$(this).addClass("lightbox-prev-btn-show");
+			}
+		},function(){
+			if(!$(this).hasClass("disabled") && self.groupData.length>1){
+				$(this).removeClass("lightbox-prev-btn-show");
+			}
+		}).click(function(e){
+			if(!$(this).hasClass("disabled")&&self.flag){
+				self.flag=false;
+				e.stopPropagation();
+				self.goTo("prev");
+			}
+		});
 	};
 	Lightbox.prototype={
+		goTo:function(dir){
+			
+			if(dir==="next"){
+				//this.groupData
+				//this.index
+				this.index++;
+				if(this.index>=this.groupData.length-1){
+					this.nextBtn.addClass("disabled").removeClass("lightbox-next-btn-show");
+				}
+				if(this.index!=0){
+					this.prevBtn.removeClass("disabled");
+				}
+				var src=this.groupData[this.index].src;
+				this.loadPicSize(src);
+			}else if(dir==="prev"){
+				this.index--;
+				if(this.index<=0){
+					this.prevBtn.addClass("disabled").removeClass("lightbox-prev-btn-show");
+				}
+				if(this.index!=this.groupData.length-1){
+					this.nextBtn.removeClass("disabled");
+				}
+				var src=this.groupData[this.index].src;
+				this.loadPicSize(src);
+			}
+		},
 		loadPicSize:function(sourceSrc){
 			var self=this;
+			self.popupPic.css({ width:"auto",height:"auto" }).hide();
 			this.preLoadImg(sourceSrc,function(){
 				self.popupPic.attr("src",sourceSrc);
 				var picWidth=self.popupPic.width();
 				var picHeight=self.popupPic.height();
-				
+				console.log(picWidth,picHeight);
 				self.changePic(picWidth,picHeight);
 			});
 		},
@@ -67,7 +138,8 @@
 					width:width-10,
 					height:height-10
 				}).fadeIn();
-				self.picCaptionArea.fadeIn()
+				self.picCaptionArea.fadeIn();
+				self.flag=true;
 			});
 
 			//console.log(this.index);
@@ -183,7 +255,7 @@
 							'<span class="lightbox-btn lightbox-prev-btn "></span>'+
 							'<img class="lightbox-image" src="images/2-2.jpg" alt="">'+
 							'<span class="lightbox-btn lightbox-next-btn "></span>'+
-						'</div>'+
+			 			'</div>'+
 						'<div class="lightbox-pic-caption">'+
 							'<div class="lightbox-caption-area">'+
 								'<p class="lightbox-pic-desc"></p>'+
@@ -197,4 +269,4 @@
 		}
 	};
 	window["Lightbox"]=Lightbox;
-})(jQuery); 
+})(jQuery);
