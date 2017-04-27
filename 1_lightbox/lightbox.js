@@ -37,10 +37,12 @@
 		this.popupMask.click(function(){
 			$(this).fadeOut();
 			self.popupWin.fadeOut();
+			self.clear=false;
 		});
 		this.closeBtn.click(function(){
 			self.popupMask.fadeOut();
 			self.popupWin.fadeOut();
+			self.clear=false;
 		});
 
 		this.flag=true;
@@ -76,6 +78,19 @@
 				self.goTo("prev");
 			}
 		});
+
+		//绑定窗口调整事件
+		var timer=null;
+		this.clear = false;
+		$(window).resize(function(){
+			
+			if(self.clear){
+				window.clearTimeout(timer);
+				timer=window.setTimeout(function(){
+					self.loadPicSize(self.groupData[self.index].src);	
+				},500);
+			}
+		});
 	};
 	Lightbox.prototype={
 		goTo:function(dir){
@@ -107,6 +122,7 @@
 		loadPicSize:function(sourceSrc){
 			var self=this;
 			self.popupPic.css({ width:"auto",height:"auto" }).hide();
+			self.picCaptionArea.hide();
 			this.preLoadImg(sourceSrc,function(){
 				self.popupPic.attr("src",sourceSrc);
 				var picWidth=self.popupPic.width();
@@ -140,6 +156,7 @@
 				}).fadeIn();
 				self.picCaptionArea.fadeIn();
 				self.flag=true;
+				self.clear=true;
 			});
 
 			//console.log(this.index);
