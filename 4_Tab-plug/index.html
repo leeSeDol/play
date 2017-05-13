@@ -17,17 +17,23 @@
 		}
 	</style>
 	<link rel="stylesheet" href="style.css">
+	<script src="jquery.js"></script>
 </head>
 <body>
-	<div class="tab">
+	<div class="js-tab tab" data-config='{
+							"triggerType":"click",
+							"effect":"fade",
+							"invoke":2,
+							"auto":5000
+								}'>
 		<ul class="tab-nav">
-			<li><a href="#">新闻</a></li>
+			<li class="actived"><a href="#">新闻</a></li>
 			<li><a href="#">娱乐</a></li>
 			<li><a href="#">电影</a></li>
 			<li><a href="#">科技</a></li>
 		</ul>
 		<div class="content-wrap">
-			<div class="content-item current active">
+			<div class="content-item current">
 				<img src="images/1.jpg" alt="" width="100%" height="100%">
 			</div>
 			<div class="content-item">
@@ -41,5 +47,12 @@
 			</div>
 		</div>
 	</div>
+<script type="text/javascript" src="tab.js"></script>
+<script>
+$(function(){
+	//TAB
+	var tab1 = new Tab($(".js-tab").eq(0));
+});
+</script>
 </body>
 </html>
