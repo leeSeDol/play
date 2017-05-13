@@ -18,11 +18,11 @@
 	color:#fff;
 	text-decoration:none;
 }
-.tab .tab-nav li.active{
+.tab .tab-nav li.actived{
 	background-color:#fff;
 }
-.tab .tab-nav li.active a{
-	background-color: #777;
+.tab .tab-nav li.actived a{
+	color: #777;
 }
 .tab .content-wrap{
 	background-color: #fff;
@@ -32,4 +32,7 @@
 .tab .content-wrap .content-item{
 	height:200px;
 	display:none;
+}
+.tab .content-wrap .current{
+	display:block;
 }
