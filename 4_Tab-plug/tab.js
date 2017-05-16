@@ -1,4 +1,4 @@
-/*;(function($){
+;(function($){
 	var Tab=function(tab){
 		var _this_=this;
 		//保存单个Tab组件
@@ -120,13 +120,13 @@
 	});
 
 	window.Tab=Tab;
-})(jQuery);*/
+})(jQuery);
 
 
 
 
 
-;(function($){
+/*;(function($){
 
 	var Tab = function(tab){
 		
@@ -227,4 +227,4 @@
 		}
 	});
 	window["Tab"]=Tab;
-})(jQuery);
+})(jQuery);*/
