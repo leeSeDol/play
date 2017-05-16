@@ -12,24 +12,27 @@
 }
 .tab .tab-nav li a{
 	display:block;
+	text-decoration:none;
+	padding:0 20px;
 	height:30px;
 	line-height:30px;
-	padding:0px 20px;
 	color:#fff;
-	text-decoration:none;
-}
-.tab .tab-nav li.actived{
-	background-color:#fff;
-}
-.tab .tab-nav li.actived a{
-	color: #777;
 }
 .tab .content-wrap{
 	background-color: #fff;
 	padding:5px;
 	height:200px;
 }
+.tab .tab-nav li.actived{
+	background-color: #fff;
+}
+.tab .tab-nav li.actived a{
+	color:#777;
+}
+
 .tab .content-wrap .content-item{
+	position:absolute;
+	width:290px;
 	height:200px;
 	display:none;
 }
