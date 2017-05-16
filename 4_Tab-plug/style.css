@@ -1,3 +1,18 @@
+*{
+	margin:0;
+	padding:0;
+	list-style-type:none;
+}
+body{
+	background-color: #323232;
+	font-size:12px;
+	font-family:"微软雅黑";
+	padding:100px;
+}
+.tab-view{
+	float:left;
+	margin-right:130px;
+}
 .tab{
 	width:300px;
 }
