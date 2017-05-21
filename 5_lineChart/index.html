@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>折线图</title>
+    <style>
+        canvas{
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+
+     <canvas id="canvas" width="600" height="400"></canvas>
+
+</body>
+
+<script>
+    var canvas=document.getElementById('canvas');
+    var ctx=canvas.getContext('2d');
+
+    /*画布的宽高*/
+    var w=canvas.width,
+        h=canvas.height;
+
+    /* 起始点距离边上的位置*/
+    var padding=20;
+
+    ctx.moveTo(padding,padding);
+    ctx.lineTo(padding,h-padding);
+    ctx.lineTo(w-padding,h-padding);
+    ctx.stroke();
+
+    /*箭头的宽高*/
+    var arrowW=16,
+        arrowH=16;
+    /*竖方向箭头*/
+    ctx.beginPath();
+    ctx.moveTo(padding,padding-arrowH/2);
+    ctx.lineTo(padding-arrowW/2,padding+arrowH/2);
+    ctx.lineTo(padding,padding);
+    ctx.lineTo(padding+arrowW/2,padding+arrowH/2);
+
+    /*横向箭头*/
+    ctx.moveTo(w-padding+arrowW/2,h-padding);
+    ctx.lineTo(w-padding-arrowW/2,h-padding-arrowH/2);
+    ctx.lineTo(w-padding,h-padding);
+    ctx.lineTo(w-padding-arrowW/2,h-padding+arrowH/2)
+
+    ctx.fill();
+
+    /*封装画小方块的函数*/
+    function drawPoint(x,y,r,color){
+        r=r||8;
+        color=color||'#000';
+        ctx.beginPath();
+        ctx.moveTo(x-r,y-r);
+        ctx.lineTo(x+r,y-r);
+        ctx.lineTo(x+r,y+r);
+        ctx.lineTo(x-r,y+r);
+        ctx.fillStyle=color;
+        ctx.fill();
+    }
+//    drawPoint(40,40);
+   /*每个小方块的位置*/
+    var points=[ [20,80],[40,1200],[80,80],[200,300],[400,150] ];
+
+    var x0=padding,
+        y0=h-padding;
+
+    /*让每个小方块的位置按照points[0][0]的大小排列*/
+    points.sort(function(a,b){
+        return a[0]-b[0];
+    })
+
+    /*获取坐标轴的有效长度*/
+    var xLength=w-2*padding-arrowW;
+    var yLength=h-2*padding-arrowH;
+
+    /*求出y坐标的最大值*/
+    var yMax=Math.max.apply(null,points.map(function(ele){
+        return ele[1];
+    }))
+    console.log(yMax);
+
+    /*求出x坐标的最大值*/
+    var xMax=points[points.length-1][0];
+    console.log(xMax);
+
+
+    /* 让每一个小方块的位置*/
+
+    var renderPoints=points.map(function(ele){
+        var x,y;
+        /*缩放坐标点*/
+        x=ele[0]*xLength/xMax;
+        y=ele[1]*yLength/yMax;
+        /*坐标系原点变换*/
+        x+=x0;
+        y=y0-y;
+
+          return [x,y];
+    })
+    console.log(renderPoints);
+
+    /*给每个小方块添加到每一个位置去*/
+    renderPoints.forEach(function(ele){
+        drawPoint(ele[0],ele[1],6,'#daa50');
+    })
+
+    /*开始连线*/
+    ctx.beginPath();
+    ctx.strokeStyle='red';
+    ctx.moveTo(renderPoints[0][0],renderPoints[0][1]);
+
+    renderPoints.forEach(function(ele,i){
+        if(i!=0){
+            ctx.lineTo(ele[0],ele[1]);
+            ctx.stroke();
+        }
+    })
+
+</script>
+
+</html>
