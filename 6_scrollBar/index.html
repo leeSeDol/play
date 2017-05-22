@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>index</title>
+<style>
+	*{	margin:0;padding:0;}
+	#div1{
+		position:relative;
+		width:500px;
+		height:500px;
+		background-color: #ffc;
+		margin-left:10px;
+		overflow:hidden;
+	}
+	#div2{
+		width:10px;
+		height:500px;
+		background-color: #08b;
+		position:absolute;
+		top:0;
+		right:0;
+	}
+	#div3{
+		width:10px;
+		height:30px;
+		background-color: #fc0;
+		border-radius:5px;
+		position:absolute;
+		cursor:pointer;
+	}
+	#div4{
+		width:485px;
+		position:absolute;
+		left:0;
+		top:0;
+	}
+</style>
+<script>
+window.onload=function(){
+	var oDiv1=document.getElementById("div1");
+	var oDiv2=document.getElementById("div2");
+	var oDiv3=document.getElementById("div3");
+	var oDiv4=document.getElementById("div4");
+
+	oDiv3.onmousedown=function(ev){
+		var ev=ev||event;
+		disY=ev.clientY-this.offsetTop;
+		var iMaxTop=oDiv2.offsetHeight-oDiv3.offsetHeight;
+		document.onmousemove=functkoijklion(ev){
+			var ev=ev||event;
+			var T=ev.clientY-disY;
+			if(T<0){
+				T=0;
+			}else if(T>iMaxTop){
+				T=iMaxTop;
+			}
+			oDiv3.style.top=T+"px";
+			var isScale = T/iMaxTop;
+			oDiv4.style.top = (oDiv1.offsetHeight-oDiv4.offsetHeight)*isScale+"px";
+		};
+		document.onmouseup=function(){
+			document.onmousemove=document.onmouseup=null;
+		};
+		return false;
+	};
+};
+</script>
+</head>
+<body>
+	<div id="div1">
+		<div id="div2">
+			<div id="div3"></div>
+		</div>
+		<div id="div4">
+			start！！！
+			网站开发属于web领域，现在很多是PHP方式开发领域，其内容很广泛。对于新来说，按什么顺序来学，才更容易入门呢？
+首先来看PHP整个体系的内容划分，然后根据这些总结一下学习顺序和路线。
+新手学PHP网站开发的最佳学习顺序
+
+从横向来看，当用浏览器打开某个PHP页面的时候就牵涉到了如下东西：
+
+前端就有html,css,js；在js基础上封装出了jquery库，在js和jquery库上又封装了新的插件，如：bootstrap,amaze,layer,富文本编辑器等等。然后就到了php部分，在这里需要存储动态数据，必然要数据库了。数据库又牵扯出关系型数据库，如：mssql,mysql,sqlite,db2等等和非关系型数据库，如:Redis,MongDB，图数据库等。一个web系统是需要服务器支撑的，通常都会选择linux服务器。
+
+从纵向上来看，单就PHP方向就有php的各种基础，如：变量的定义，函数的使用，函数库。类的抽象、封装、继承、多态、接口，再往下走就有编程模式，如：MVC、工厂模式。从安全性还牵扯出单入口，前后端分离的模板解析引擎，如Smarty,以及其他框架和系统各自的模板解析引擎。
+网站开发属于web领域，现在很多是PHP方式开发领域，其内容很广泛。对于新来说，按什么顺序来学，才更容易入门呢？
+
+首先来看PHP整个体系的内容划分，然后根据这些总结一下学习顺序和路线。
+新手学PHP网站开发的最佳学习顺序
+
+从横向来看，当用浏览器打开某个PHP页面的时候就牵涉到了如下东西：
+
+前端就有html,css,js；在js基础上封装出了jquery库，在js和jquery库上又封装了新的插件，如：bootstrap,amaze,layer,富文本编辑器等等。然后就到了php部分，在这里需要存储动态数据，必然要数据库了。数据库又牵扯出关系型数据库，如：mssql,mysql,sqlite,db2等等和非关系型数据库，如:Redis,MongDB，图数据库等。一个web系统是需要服务器支撑的，通常都会选择linux服务器。
+
+从纵向上来看，单就PHP方向就有php的各种基础，如：变量的定义，函数的使用，函数库。类的抽象、封装、继承、多态、接口，再往下走就有编程模式，如：MVC、工厂模式。从安全性还牵扯出单入口，前后端分离的模板解析引擎，如Smarty,以及其他框架和系统各自的模板解析引擎。
+网站开发属于web领域，现在很多是PHP方式开发领域，其内容很广泛。对于新来说，按什么顺序来学，才更容易入门呢？
+
+首先来看PHP整个体系的内容划分，然后根据这些总结一下学习顺序和路线。
+新手学PHP网站开发的最佳学习顺序
+
+从横向来看，当用浏览器打开某个PHP页面的时候就牵涉到了如下东西：
+
+前端就有html,css,js；在js基础上封装出了jquery库，在js和jquery库上又封装了新的插件，如：bootstrap,amaze,layer,富文本编辑器等等。然后就到了php部分，在这里需要存储动态数据，必然要数据库了。数据库又牵扯出关系型数据库，如：mssql,mysql,sqlite,db2等等和非关系型数据库，如:Redis,MongDB，图数据库等。一个web系统是需要服务器支撑的，通常都会选择linux服务器。
+
+从纵向上来看，单就PHP方向就有php的各种基础，如：变量的定义，函数的使用，函数库。类的抽象、封装、继承、多态、接口，再往下走就有编程模式，如：MVC、工厂模式。从安全性还牵扯出单入口，前后端分离的模板解析引擎，如Smarty,以及其他框架和系统各自的模板解析引擎。end！！！
+		</div>
+	</div>
+</body>
+</html>
