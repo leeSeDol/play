@@ -1,0 +1,42 @@
+.select{
+	margin:50px 500px;
+	width:180px;
+	text-align:center;
+}
+.select a{
+	color:#fcc;
+	text-decoration:none;
+}
+.select ul,.select li{
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+.select span{
+	line-height:46px;
+	background-color: #41b1d9;
+	display:block;
+	margin-bottom:20px;
+	position:relative;
+	z-index:2;
+	border-radius:5px;
+	-webkit-transition:all 0.2s ease-in;
+	transition:all 0.2s ease-in;
+}
+.select span a:after{
+	content:" ";
+	display:inline-block;
+	width:0px;
+	height:0px;
+	line-height:0px;
+	font-size:0px;
+	border-bottom:6px solid #ccc;
+	border-left:4px solid transparent;
+	border-right:4px solid transparent;
+	margin-left:10px;
+	vertical-align:1px;
+	-webkit-transition:all 0.2s ease-in;
+	transition:all 0.2s ease-in;
+}
+
+/*给送个下拉助攻*/
