@@ -40,3 +40,10 @@
 }
 
 /*给送个下拉助攻*/
+.select:hover span{
+	background-color: #1f93bc;
+}
+.select:hover span a{
+	-webkit-transform:rotate(180deg);
+	transform:rotate(180deg);
+}
