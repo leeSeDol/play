@@ -4,13 +4,15 @@
 	text-align:center;
 }
 .select a{
-	color:#fcc;
+	color:#fff;
 	text-decoration:none;
 }
-.select ul,.select li{
+.select ul,
+.select li{
 	margin:0;
 	padding:0;
 	list-style:none;
+	background-color: #fff;
 }
 .select span{
 	line-height:46px;
@@ -24,6 +26,7 @@
 	transition:all 0.2s ease-in;
 }
 .select span a:after{
+
 	content:" ";
 	display:inline-block;
 	width:0px;
@@ -36,14 +39,94 @@
 	margin-left:10px;
 	vertical-align:1px;
 	-webkit-transition:all 0.2s ease-in;
+	transition:all 0.2s ease-in;color:#fff;
+}
+
+/*给整体的阴影和圆角，但是不能overflow*/
+.drop{
+	left:0;
+	right:0;
+	top:-9999px;
+	box-shadow:0 0 2px 0 rgba(0,0,0,0.2);
+	border-radius:5px;
+	position:absolute;
+	z-index:1;
+	-webkit-transform:translateY(-50px);
+	transform:translateY(-50px);
+	opacity:0;
+	-webkit-transition:all 0.2s ease-in;
 	transition:all 0.2s ease-in;
 }
 
 /*给送个下拉助攻*/
+.select:hover{
+	cursor:pointer;
+}
 .select:hover span{
 	background-color: #1f93bc;
 }
-.select:hover span a{
+.select:hover span a:after{
 	-webkit-transform:rotate(180deg);
 	transform:rotate(180deg);
+}
+.select:hover .drop{
+	position:static;
+	opacity:1;
+	-webkit-transform:translateY(0);
+	transform:translateY(0);
+}
+
+/*一个很重要的三角形*/
+ .drop li:first-child:before{
+	content: " ";
+	font-size:0;
+	line-height:0;
+	margin:0 auto;
+	display:block;
+	box-shadow: 0 0 2px 0 rgba(0,0,0,0.2);
+	background-color: #fc0;
+	width:10px;
+	height:10px;
+	-webkit-transform:rotate(45deg);
+	transform:rotate(45deg);
+	position:relative;
+	top: -5px;
+	z-index: 1;
+	-webkit-transition: all .2s ease-in;
+	transition: all .2s ease-in;
+}
+.drop ul{
+	background-color: #fff;
+	z-index:2;
+}
+.drop li a{
+	color:#888;
+	line-height:46px;
+	border-bottom:solid 1px #999;
+	font-size:14px;
+	display:block;
+	background-color: #fc0;
+	position:relative;
+	z-index:2;
+	-webkit-transition: all .2s ease-in;
+	transition: all .2s ease-in;
+}
+.drop li:first-child a{
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	margin-top:-10px;
+}
+.drop li:last-child a{
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-bottom:none;
+}
+
+/*hover 事件给了li 先改变三角，再改变a*/
+.drop li:hover:before{
+	background-color: #985687;
+}
+.drop li:hover a{
+	background-color: #985687;
+	color:#fff;
 }
