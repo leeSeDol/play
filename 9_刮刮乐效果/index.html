@@ -1,76 +1,12 @@
 <!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-    <style>
-
-        canvas{
-            border: 1px solid #000;
-            display: block;
-            margin: 0 auto;
-            background-size: 300px 200px;
-        }
-    </style>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>index</title>
+	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<canvas id="canvas" width="300" height="200"></canvas>
+	<canvas id="canvas" width="300" height="200"></canvas>
+	<script src="script.js"></script>
 </body>
-
-<script>
-
-    var canvas = document.getElementById( 'canvas' ),
-        ctx = canvas.getContext( '2d' );
-
-    var w = canvas.width,
-        h = canvas.height;
-
-    /*随机生成奖品*/
-    var awards = [ '美女一只', 'sorry 很遗憾。再接再厉', '抓住一只单身狗', '滚去敲代码', 'sorry 很遗憾。再接再厉', '美女一只', '抓住一只单身狗', '滚去敲代码', '抓住一只单身狗', 'sorry 很遗憾。再接再厉',
-        '抓住一只单身狗' ];
-
-    /*随机生成一个索引*/
-    var award=awards[Math.floor(Math.random()*awards.length)];
-
-    /*将奖品信息绘制在canvas*/
-    ctx.font='bold 32px sans-serif';
-    ctx.textAlign='center';
-    ctx.textBaseline='middle';
-    ctx.fillText(award,w/2,h/2);
-
-    /*然后将奖品信息装换成canvas的背景图 1为最高质量*/
-    var dataurl=canvas.toDataURL('image/png',1);
-    canvas.style.background='url('+dataurl+')';
-    ctx.clearRect(0,0,w,h);
-
-    /*定义canvas蒙版*/
-    ctx.fillStyle='#ddd';
-    ctx.fillRect(0,0,w,h);
-
-
-    var flag=false;
-    /*鼠标按下事件*/
-    canvas.addEventListener('mousedown',function(){
-        flag=true;
-        /*涂抹去蒙版*/
-        ctx.globalCompositeOperation='destination-out';
-    })
-
-    /*鼠标移动事件*/
-    canvas.addEventListener('mousemove',function(e){
-        if(flag){
-            var x= e.clientX-canvas.offsetLeft;
-            var y= e.clientY-canvas.offsetTop;
-            ctx.beginPath();
-            ctx.fillRect(x,y,30,30);
-            ctx.fill();
-        }
-    })
-
-    /*鼠标提起事件*/
-    canvas.addEventListener('mouseup',function(){
-        flag=false;
-        ctx.globalCompositeOperation='source-over';
-    })
-</script>
 </html>
