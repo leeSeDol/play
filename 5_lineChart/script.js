@@ -66,5 +66,30 @@ window.onload=function(){
 	xMax = points[points.length-1][0];
 	
 	/*得到每一个小方块的位置*/
-	
+	var renderPoints = points.map(function(ele){
+		var x,y;
+		/*缩放坐标点*/
+		x=ele[0]*xLength/xMax;
+		y=ele[1]*yLength/yMax;
+
+		x += x0;
+		y = y0-y;
+		return [x,y];
+	});
+
+	console.log(renderPoints);
+	/*固定位置*/
+	renderPoints.forEach(function(ele){
+		drawPoint(ele[0],ele[1],6,'#08b');
+	});
+	/*开始连线*/
+	ctx.beginPath();
+	ctx.strokeStyle='#e4393c';
+	ctx.moveTo(renderPoints[0][0],renderPoints[0][1]);
+	renderPoints.forEach(function(ele,i){
+		if( i!=0 ){
+			ctx.lineTo(ele[0],ele[1]);
+			ctx.stroke();
+		}
+	});
 };
