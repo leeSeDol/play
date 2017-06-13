@@ -1,0 +1,44 @@
+*{
+	margin:0;
+	padding:0;
+	list-style: none;
+    border: none;
+}
+#box{
+	width:600px;
+	height:40px;
+	border-radius:10px;
+	margin:100px auto;
+	position:relative;
+}
+#box #left{
+	width:500px;
+	height:40px;
+	background-color: #ccc;
+	border-radius:10px;
+	position:absolute;
+}
+#box #left #bg{
+	background: orangered;
+	width:100px;
+	height:40px;
+	border-radius:10px 0 0 10px; 
+}
+#box #left #bar{
+	width:30px;
+	height:60px;
+	border-radius:10px;
+	position:absolute;
+	left:100px;
+	top:-10px;
+	background: orange;
+}
+#right{
+	width:100px;
+	height:40px;
+	position:absolute;
+	top:0;
+	right:0;
+	text-align: center;
+	line-height: 40px;
+}
