@@ -1,0 +1,36 @@
+*{
+	margin:0;
+	padding:0;
+}
+#watermarkOpacity_div{
+	width:300px;
+	height:300px;
+}
+.proNum{
+	padding-top:20px;
+	padding-left:26px;
+}
+.proNum input{
+	width:70px;
+	height:32px;
+	font-size:14px;
+	text-align:center;
+	border:1px solid #d6dae3;
+	border-radius:3px;
+	color:#82899b;
+}
+.proNum .percent{
+	color:#82899b;
+	font-size:14px;
+}
+.watermarkOpacity_progress{
+	width:245px;
+	height:6px;
+
+}
+.watermarkOpacity_progress p{
+
+}
+.watermarkOpacity_progress i{
+
+}
