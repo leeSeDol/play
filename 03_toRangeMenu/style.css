@@ -1,0 +1,39 @@
+*{
+	margin:0;
+	padding:0;
+}
+.main-menu{
+	width:150px;
+	border:1px solid #ccc;
+}
+.main-menu p{
+	height:36px;
+	line-height:36px;
+	border-bottom:1px solid #fcf;
+	background-color: #fff;
+	padding-left:20px;
+}
+.main-menu p:hover{
+	background-color: #0eb;
+	cursor:pointer;
+}
+.main-menu p:nth-child(4){
+	border-bottom:none;
+}
+.main-menu p span{
+	float:right;
+	margin-right:20px;
+}
+.menu-list{
+	width:100px;
+}
+.menu-list .menu {
+	border:1px solid #ccc;
+	position:absolute;
+	left:150px;
+}
+.menu-list .menu p{
+	width:100px;
+	height:36px;
+	line-height:36px;
+}
