@@ -12,6 +12,8 @@
 	border-bottom:1px solid #fcf;
 	background-color: #fff;
 	padding-left:20px;
+
+	position:relative;
 }
 .main-menu p:hover{
 	background-color: #0eb;
@@ -28,12 +30,33 @@
 	width:100px;
 }
 .menu-list .menu {
-	border:1px solid #ccc;
+	border:1px solid #ddd;
 	position:absolute;
 	left:150px;
+	display:none;
+	background-color: #fff;
+	z-index:2;
 }
 .menu-list .menu p{
 	width:100px;
 	height:36px;
 	line-height:36px;
+}
+.menu-list .menu:nth-child(1){
+	top:35px;
+}
+.menu-list .menu:nth-child(2){
+	top:73px;
+}
+.menu-list .menu:nth-child(3){
+	top:107px;
+}
+.main-menu p:hover i{
+	margin-right:-2px;
+	width:4px;
+	height:36px;
+	position:absolute;
+	right:0;
+	background-color: #fff;
+	z-index:100;
 }
