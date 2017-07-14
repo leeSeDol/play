@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" id="viewport" content="width = device-width, initial-scale = 1, minimum-scale = 1, maximum-scale = 1, user-scalable=no">
+<title>dome</title>
+<style>
+	ul,li{ list-style-type: none; }
+</style>
+</head>
+<body>
+	<div id="menu-box">
+		<ul>
+			<li>
+				<a href="">
+					<span class="menu-txt">目录一</span>
+					<span class="menu-line"></span>
+				</a>
+			</li>
+			<li>
+				<a href="">
+					<span class="menu-txt">目录二</span>
+					<span class="menu-line"></span>
+				</a>
+			</li>
+			<li>
+				<a href="">
+					<span class="menu-txt">目录三</span>
+					<span class="menu-line"></span>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<style type="text/css">
+	#menu-box{ width: 640px; margin: 0 auto;}
+	#menu-box ul{overflow: hidden;}
+	#menu-box li{float: left; width: 33.3333%}
+	#menu-box a{display: block; text-align: center;}
+	#menu-box .menu-txt{display: block;}
+	#menu-box .menu-line{
+			width: 0; padding: 0; height: 2px; 
+			background: #00B3E1; display: inline-block; 
+			-webkit-transition-duration: 0.4s;	
+			-moz-transition-duration: 0.4s;	
+			-ms-transition-duration: 0.4s;	
+			-o-transition-duration: 0.4s;	
+			transition-duration: 0.4s;
+		}
+	#menu-box .menu-line.active, #menu-box a:hover .menu-line{
+		padding: 0 40%;
+	}
+	</style>
+</body>
+</html>
