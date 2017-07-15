@@ -20,7 +20,7 @@ ColorBar.prototype.drawPanel=function(){
 		colorPx.click(function(){
 			var bgColor=$(this).css({"background-color"});
 			$(self.result).css({"background-color":bgColor});
-			$(self.textObject).css({"background-color":bgColor});
+			$(self.textObject).text(bgColor);
 		});
 
 		colorPx.css({
@@ -32,3 +32,7 @@ ColorBar.prototype.drawPanel=function(){
 	}
 
 };
+
+(function(){
+	var colorBar = new colorBar( '#color_panel' , 255*3 , 165 ,'#color_result','#colorText');
+});
