@@ -35,4 +35,5 @@ ColorBar.prototype.drawPanel=function(){
 
 (function(){
 	var colorBar = new colorBar( '#color_panel' , 255*3 , 165 ,'#color_result','#colorText');
+	colorBar.drawPanel();
 });
