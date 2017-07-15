@@ -1,0 +1,36 @@
+ul li{
+	list-style:none;
+}
+
+#menu-box{
+	width:640px;
+	margin:0 auto;
+}
+#menu-box ul{
+	overflow:hidden;
+}
+#menu-box li{
+	float:left;
+	width:33.3333%;
+}
+#menu-box a {
+	display:block;
+	text-decoration:none;
+	text-align:center;
+}
+#menu-box .menu-txt{
+	display:block;
+	padding:0;
+}
+#menu-box .menu-line{
+	width:0%;
+	height:2px;
+	transform:translateY(-10px);
+	background: #00B3E1;
+	padding:0;
+	display:inline-block;
+	transition-duration:0.5s;
+}
+#menu-box a:hover .menu-line{
+	padding:0 40%;
+}
