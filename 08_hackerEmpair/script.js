@@ -5,11 +5,20 @@ window.onload=function(){
 	var w = can.width = window.screen.width;
 	var h = can.height = window.screen.height;
 
-	var words=Array(256).join('1').split('');
+	var words = Array(256).join('1').split('');
+	var text = '';
+	var x=0;
 
 	function draw(){
-
-
+		ctx.fillStyle='rgba(0,0,0,0.05)';
+		ctx.fillRect(0,0,w,h);
+		ctx.fillStyle=color();
+		words.map(function(y,n){
+			text = String.fromCharCode(65+Math.ceil(Math.random()*57));
+			x=n*10
+			ctx.fillText(text,x,y);
+			words[n] = y > Math.ceil(800+Math.random()*586) ? 0:y+=10;
+		})
 	};
 	setInterval(function(){
 		draw();
@@ -21,4 +30,4 @@ window.onload=function(){
 
 		return "rgb("+ r +","+ g +","+ b +")";
 	}
-}
+};
