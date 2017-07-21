@@ -1,0 +1,31 @@
+*{
+	margin:0;
+	padding:0;
+}
+.wrap{
+	position:relative;
+}
+.box{
+	padding:15px 0 0 15px;
+	float:left;
+	width:220px;
+	overflow:hidden;
+	position:relative;
+}
+.box .pic{
+	position:relative;
+	padding:15px;
+	width:100%;
+	height:auto;
+	border:1px solid #ccc;
+	border-radius:5px;
+	box-shadow:0 0 10px #ccc;
+	overflow:hidden;
+	box-sizing:border-box;
+}
+.box .pic img{
+	width:100%;
+}
+.face{
+	
+}
