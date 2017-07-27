@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>无标题文档</title>
+        <style>
+			body{margin:0;font-size:0;}
+        	#canvas{background:#000;}
+        </style>
+    </head>
+    
+    <body>
+    	<canvas id="canvas"></canvas>
+        <script>
+        	window.onload = function () {
+				var canvas = document.getElementById('canvas');
+				var ctx = canvas.getContext('2d');
+				canvas.width = 600;
+				canvas.height = 600;
+				
+				//定义初始位置				
+				var x = 100;
+				var y = 100;
+				
+				//定义圆周轨迹
+				var circle = {
+					x: 300,
+					y: 200,
+					r: 150
+				}				
+				var angle = 0; //运动弧度
+				var x0 = circle.x; //运动初始位置
+				var y0 = circle.y - circle.r;
+				
+				//定义画布遮罩				
+				ctx.fillStyle = 'rgba(0,0,0,0.05)';
+				ctx.lineCap = 'round';
+				
+				function draw () {
+					//每次给画布添加画一层半透明遮罩
+					ctx.fillRect(0,0,600,600);					
+					
+					/*------这个轨迹可以去掉-------*/
+					ctx.beginPath();
+					ctx.lineWidth = 1;
+					ctx.strokeStyle='#f60';
+					ctx.arc(circle.x,circle.y,circle.r,0,Math.PI/180*360,false);
+					ctx.closePath();
+					ctx.stroke();
+					/*------这个轨迹可以去掉-------*/
+					
+					//改变坐标
+					angle++;
+					var x = Math.sin(angle*Math.PI/180)*circle.r + x0;
+					var y = circle.r - Math.cos(angle*Math.PI/180)*circle.r + y0;
+					
+					//绘制				
+					ctx.strokeStyle = '#fff';
+					ctx.lineWidth = 10;
+					ctx.beginPath();
+					ctx.moveTo(x,y);
+					ctx.lineTo(x+0.5,y+0.5);
+					ctx.stroke();
+				}	
+				var testtimer = setInterval(function () {
+					draw();
+				}, 16);				
+			};
+        </script>
+    </body>
+</html>
