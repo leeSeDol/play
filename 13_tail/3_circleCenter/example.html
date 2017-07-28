@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>无标题文档</title>
+        <style>
+			body{margin:0;font-size:0;}
+        	#canvas{background:#000;}
+        </style>
+    </head>
+    
+    <body>
+    	<canvas id="canvas"></canvas>
+        <script>
+        	window.onload = function () {
+				var obj = {
+					el: document.getElementById('canvas'),
+					width: document.documentElement.clientWidth || document.body.clientWidth,
+					height: document.documentElement.clientHeight || document.body.clientHeight,
+					colors: ['rgba(255,255,255,0.5)','#dd4215','#f60','#333','#e4ff00','#00fff6','#00ff4e','#96b1ff'],
+					num: 500,
+					size: 1
+				}
+				if(obj.el){
+					var ctx = obj.el.getContext('2d');
+					obj.el.width = obj.width;
+					obj.el.height = obj.height;					
+					ctx.fillStyle = 'rgba(0,0,0,0.03)';
+					ctx.lineCap = 'round';					
+					init();
+				}				
+				
+				function init() {
+					var items = getItems();					
+					var timer = setInterval(function () {
+						ctx.fillRect(0,0,obj.width,obj.height);
+						for(var a=0; a<items.length; a++){
+							items[a].angle += items[a].speed;
+							items[a].x = Math.sin(items[a].angle*Math.PI/180)*items[a].path.r + items[a].x0;
+							items[a].y = items[a].path.r - Math.cos(items[a].angle*Math.PI/180)*items[a].path.r + items[a].y0;
+							ctx.beginPath();
+							ctx.strokeStyle = items[a].color;
+							ctx.lineWidth = items[a].size;
+							ctx.beginPath();
+							ctx.moveTo(items[a].x,items[a].y);
+							ctx.lineTo(items[a].x + 0.5,items[a].y + 0.5);
+							ctx.stroke();
+						}
+					}, 16);
+				};
+				
+				function getItems () {
+					var items = [];
+					for(var a=0;a<obj.num;a++){
+						var per = {};	
+						var path = {};	
+						
+						path.x = 680;
+						path.y = 300;
+						path.r = Math.floor(Math.random()*100+50);//randomNum(50,150);
+						per.x = path.x;
+						per.y = path.y - path.r;
+						per.x0 = per.x;
+						per.y0 = per.y;
+						per.angle = Math.ceil(Math.random()*360);
+						per.speed = Math.floor(Math.random()*2+1)/2//randomNum(0.5,1.5);
+						per.color = obj.colors[Math.floor(Math.random()*obj.colors.length)];
+						per.size = Math.ceil(Math.random()*obj.size);
+						
+						per.path = path;
+						items.push(per);					
+					}
+					return items;
+				};	
+				
+				/*function randomNum(a,b){
+					return Math.floor(Math.random()*(b-a+1)) + a;
+				}*/
+			};			
+        </script>
+    </body>
+</html>
