@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+	body{
+		background:#bbd149;
+		margin: 0;
+		width:100vw;
+		height: 100vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.box{
+		height: 50px;
+		width: 50px;
+		position: relative;
+	}
+	/* shadow */
+	.box::before{
+		content: '';
+		height: 8px;
+		width: 50px; 
+		background: #000; 
+		opacity: .2; 
+		border-radius: 50%;
+		position: absolute;
+		top: 67px;
+		left: 0;
+		animation: shadow .5s linear infinite;
+	}
+	/* rotate */
+	.box::after{
+		border-radius: 5px;
+		background: #fff;
+		animation: rotate .5s linear infinite;
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 50px;
+		height: 50px;
+	}
+@keyframes shadow {
+	0%, 100% {transform: scaleX(1);}
+	50% {transform: scaleX(1.2);}
+}
+
+@keyframes rotate {
+	0% {
+    	transform: translateY(0) rotate(0deg);
+  	}
+	25% {
+		transform: translateY(10px) rotate(22.5deg);
+	}
+	50% {
+		transform: translateY(20px) scale(1.1, 0.9) rotate(45deg);
+		border-bottom-right-radius: 50px;
+	}
+	75% {
+		ransform: translateY(10px) rotate(67.5deg);
+	}
+	100% {
+		transform: translateY(0) rotate(90deg);
+	}
+}
+</style>
+</head>
+
+<body>
+<div class="box">
+</div>
+</body>
+</html>
