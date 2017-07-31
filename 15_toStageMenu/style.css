@@ -1,0 +1,45 @@
+*{
+	margin:0;
+	padding:0;
+	list-style-type:none;
+	text-decoration:none;
+}
+.Menu{
+	border:1px solid #ccc;
+	width:240px;
+	height:500px;
+	box-shadow:-1px 1px 1px #ccc;
+	margin:50px 0 0 100px;
+	position:relative;
+}
+.Menu ul li{
+	width:100%;
+	position:relative;
+}
+.Menu ul li dl{
+	width:220px;
+	margin:0 auto;
+	border-bottom:1px dotted #ccc;
+	padding:12px 0;
+}
+.Menu ul li dl dt{
+	height:25px;
+	font-size:14px;
+	line-height:25px;
+
+}
+.Menu ul li dl dt a{
+	color:#000;
+}
+.Menu ul li dl dd{
+	line-height:25px;
+	font-size:12px;
+	font-family:"微软雅黑";
+}
+.Menu ul li dl dd a{
+	color:#666;
+	margin:0px 12px;
+}
+.Menu ul li dl dd a.first{
+	color:#f69;
+}
