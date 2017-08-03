@@ -1,0 +1,81 @@
+*{
+	padding:0;
+	margin:0;
+	text-decoration:none;
+	list-style:none;
+}
+body{
+	background-image: url('images/bg.jpg') ;
+}
+#express{
+	width:800px;
+	margin:0 auto;
+	margin-top:40px;
+}
+#express p{
+	color:#ccc;
+	font-size:12px;
+	line-height:22px;
+}
+.menu{
+	width:800px;
+	height:40px;
+	margin:0 auto;
+	display:block;
+}
+.menu li {
+	float:left;
+	line-height:40px;
+	overflow:hidden;
+	text-align:center;
+	position:relative;
+}
+.menu li a{
+	width:90px;
+	height:40px;
+	display:block;
+	font-size:12px;
+	position:relative;
+	cursor:pointer;
+}
+.menu li a span{
+	position:absolute;
+	left:0;
+	width:90px;
+	height:40px;
+}
+.menu li a span.out{
+	top:0px;
+}
+.menu li a span.bg{
+	top:-40px;
+}
+.menu li a span.over{
+	top:-40px;
+}
+
+/*menu 1*/
+#menu1{
+	background-image: url('images/menu_bg.gif');
+	margin-bottom:30px;
+}
+#menu1 li a span.out{
+	color:#000;
+}
+#menu1 li a span.over{
+	color:#fff;
+}
+#menu1 li a span.bg{
+	height:40px;
+	background: url('images/bg_over.gif') no-repeat center center;
+}
+/*menu 2*/
+#menu2{
+	background: #000;
+}
+#menu2 li a span.out{
+	color:#fff;
+}
+#menu2 li a span.over{
+	background-color: #fff;
+}
