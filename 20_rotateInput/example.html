@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>index</title>
+<style>
+html {
+	box-sizing: border-box;
+	font-size: 62.5%;
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	/* 	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale; */
+	box-sizing: inherit;
+}
+/* *::after, *::before {
+	box-sizing: inherit;
+} */
+
+.input-wrapper {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+body {
+	background-color: #e74c3c;
+}
+
+.input-wrapper {
+	width: 250px;
+	height: 50px;
+	transition: border-color 0.25s ease-out;
+}
+.input-wrapper input {
+	border-radius: 1px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: calc(100% - 54px);
+	height: 100%;
+	padding: 12px 15px;
+	border: none;
+	outline: none;
+	background-color: #ecf0f1;
+	color: #212121;
+	transform-origin: center;
+	font: small-caption;
+	font-size: 18px;
+	font-size: 1.8rem;
+}
+.input-wrapper .input-trigger {
+	border-radius: 1px;
+	position: relative;
+	display: inline;
+	float: right;
+	width: 50px;
+	height: 50px;
+	background-color: #e74c3c;
+	transition: background-color 0.25s ease-out;
+	cursor: pointer;
+}
+.input-wrapper .input-trigger .material-icons.icon-1,
+.input-wrapper .input-trigger .material-icons.icon-2 {
+	font-size: 26px;
+	font-size: 2.6em;
+	position: absolute;
+	top: 11px;
+	right: 12px;
+	color: #bdc3c7;
+	transition: color 0.25s ease-out;
+}
+.input-wrapper .input-trigger .material-icons.icon-2 {
+	display: none;
+	right: 14px;
+}
+.input-wrapper .input-trigger:hover {
+	transition: background-color 0.25s ease-out;
+	background-color: #c0392b;
+}
+.input-wrapper .input-trigger:hover .material-icons.icon-1,
+.input-wrapper .input-trigger:hover .material-icons.icon-2 {
+	color: #ecf0f1;
+	/* transition: color 2.5s ease-in; */
+}
+
+.passive-pw {
+	transform: rotateX(180deg) scale(1.1);
+	transition: transform 0.3s ease;
+	opacity: 0;
+	z-index: 1;
+}
+
+.active-pw {
+	transform: rotateX(0deg) scale(1);
+	transition: transform 0.3s ease;
+	z-index: 2;
+	opacity: 1;
+}
+
+.passive-text {
+	opacity: 0;
+	z-index: 1;
+	transform: rotateX(180deg) scale(1.1);
+}
+
+.active-text {
+	transform: rotateX(0deg) scale(1);
+	transition: transform 0.3s ease;
+	opacity: 1;
+	z-index: 2;
+}
+
+</style>
+<script type="text/javascript" src="jquery.js"></script>
+</head>
+<body>
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<span class="input-wrapper">
+	<input id="input-pw" class="active-pw" type="password">
+	<input id="input-text" class="passive-text" type="text">
+
+	<span class="input-trigger">
+		<i class="material-icons icon-1">remove_red_eye</i>
+		<i class="material-icons icon-2">more_horiz</i>
+	</span>
+
+</span>
+
+<script type="text/javascript">
+$(() => {
+	$('#input-text').on('keyup', () => {
+		let tempVal = $('#input-text').val();
+		$('#input-pw').val(tempVal);
+	});
+	$('#input-pw').on('keyup', () => {
+		let tempVal = $('#input-pw').val();
+		$('#input-text').val(tempVal);
+	});	
+	// rotate input fields + hide/show
+	$('.input-trigger').on('click', () => {
+		$('#input-text').toggleClass('active-text passive-text');
+		$('#input-pw').toggleClass('passive-pw active-pw');
+		$('.icon-1').toggle();
+		$('.icon-2').toggle();
+	});
+});
+</script>
+</body>
+</html>
