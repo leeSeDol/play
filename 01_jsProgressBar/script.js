@@ -1,33 +1,32 @@
 window.onload=function(){
-	let box = document.getElementById('box');
-    let left = document.getElementById('left');
-    let bg = document.getElementById('bg');
-    let bar = document.getElementById('bar');
-    let right = document.getElementById('right');
+	var box = document.getElementById('box');
+	var left = box.getElementsByClassName('left')[0];
+	var bg = left.getElementsByClassName('bg')[0];
+	var bar = left.getElementsByClassName('bar')[0];
+	var right = box.getElementsByClassName('right')[0];
 
-    right.innerHTML=parseInt(bg.offsetWidth/left.offsetWidth * 100)+'%';
 
-    bar.onmousedown=function(event){
-    	let myEvent = event || window.event;
-    	let x = myEvent.clientX - bar.offsetLeft;
+	right.innerHTML = parseInt(bg.clientWidth/left.clientWidth*100)+'%';
+	bar.onmousedown = function(event){
+		var myEvent = event||window.event;
+		var x = myEvent.clientX - bar.offsetLeft;
+		document.onmousemove = function(event){
+			myEvent = event||window.event;
+			var Left = myEvent.clientX - x;
 
-    	document.onmousemove=function(event){
-    		
-    		let myEvent = event || window.event;
-    		let Left = myEvent.clientX - x;
-    		if(Left<0){
-    			Left=0;
-    		}else if(Left > left.offsetWidth-30){
-    			Left = left.offsetWidth-30;
-    		}
-    		bg.style.width = Left+'px';
-    		bar.style.left = Left+'px';
-    		right.innerHTML = parseInt(Left/(left.offsetWidth-bar.offsetWidth)*100) + '%';
-    	};
-   
-	    document.onmouseup=function(){
+			Left < 0 ? Left = 0:Left;
+			Left > left.offsetWidth - bar.offsetWidth ? Left = left.offsetWidth - bar.offsetWidth : Left;
+ 			
+ 			bg.style.width = Left+'px';
+			bar.style.left = Left+'px';
+			right.innerHTML = parseInt(bg.offsetWidth/(left.offsetWidth-bar.offsetWidth)*100)+'%';
+
+			return false;
+		};
+		document.onmouseup = function(){
 			document.onmousemove = null;
 			document.onmouseup = null;
-	    };
-    };
+			return false;
+		};
+	};
 };
