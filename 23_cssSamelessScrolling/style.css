@@ -18,6 +18,9 @@
 	width:200%;
 	animation:move 5s linear infinite;
 }
+.wrapper ul:hover{
+	animation-play-state:paused;
+}
 .wrapper ul li{
 	border:1px solid #fff;
 	width:98px;
