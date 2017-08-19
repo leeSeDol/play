@@ -1,0 +1,40 @@
+*{
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+.wrapper{
+	width:500px;
+	height:98px;
+	margin:60px auto 0;
+	border:1px solid #000;
+	position:relative;
+	overflow:hidden;
+}
+.wrapper ul{
+	position:absolute;
+	top:0;
+	left:0;
+	width:200%;
+	animation:move 5s linear infinite;
+}
+.wrapper ul li{
+	border:1px solid #fff;
+	width:98px;
+	height:98px;
+	float:left;
+	background-color: #000;
+	color:#fff;
+	font-size:25px;
+	text-align:center;
+	height:100px;
+	line-height:100px;
+}
+@keyframes move{
+	0%{
+		left:0;
+	}
+	100%{
+		left:-500px;
+	}
+}
