@@ -1,0 +1,38 @@
+.layout{
+	width:1000px;
+	margin:0 auto;
+}
+#header p,#footer p{
+	height:100px;
+	line-height:100px;
+	background-color: red;
+	text-align:center;
+	color:#fff;
+}
+#main .nav{
+	height:50px;
+	line-height:50px;
+	background-color: #08b;
+	text-align:center;
+	color:#fff;
+}
+.content .aside-bar{
+	width:200px;
+	height:1000px;
+	line-height:500px;
+	float:left;
+	background-color: #f89;
+	text-align:center;
+}
+.content .main-bar{
+	margin-left:200px;
+	width:800px;
+	height:1000px;
+	text-align:center;
+	background-color: #ccc;
+}
+.content:after{
+	content:"";
+	display:block;
+	clear:both;
+}
