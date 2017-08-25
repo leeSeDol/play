@@ -1,0 +1,77 @@
+*{
+	margin:0;
+	padding:0;
+	list-style:none;
+	text-decoration:none;
+}
+body{
+	background-color: rgba(0,0,0,0.8);
+}
+.menu{
+	width:800px;
+	height:40px;
+	display:block;
+	margin:80px auto;
+}
+.menu ul{
+
+}
+.menu ul li{
+	line-height:40px;
+	text-align:center;
+	float:left;
+	overflow:hidden;
+}
+.menu ul li a{
+	width:90px;
+	height:40px;
+	line-height:40px;
+	display:block;
+	font-size:12px;
+	position:relative;
+}
+.menu ul li a span{
+	width:90px;
+	height:40px;
+	position:absolute;
+	left:0;
+}
+.menu ul li a span.out{
+	top:0;
+}
+.menu ul li a span.bg{
+	top:-40px;
+}
+.menu ul li a span.over{
+	top:-40px;
+}
+/*menu1*/
+#menu1{
+	background:url('images/menu_bg.gif');
+}
+#menu1 ul li a{
+	color:#000;
+}
+#menu1 ul li a span.out{
+	color:#000;
+}
+#menu1 ul li a span.bg{
+	background: url('images/bg_over.gif') no-repeat center center;
+}
+#menu1 ul li a span.over{
+	color:#fff;
+}
+/*menu2*/
+#menu2{
+	background:#000;
+}
+#menu2 ul li a{
+	color:#fff;
+}
+#menu2 ul li a span.out{
+	color:#fff;
+}
+#menu2 ul li a span.over{
+	background-color: #fff;
+	color:#128;
+}
