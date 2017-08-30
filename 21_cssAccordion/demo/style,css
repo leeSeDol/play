@@ -1,0 +1,30 @@
+*{
+	margin:0;
+	padding:0;
+	list-style-type:none;
+}
+div.wrapper{
+	
+}
+div.wrapper ul{
+	width:600px;
+	height:350px;
+	position:relative;
+	overflow:hidden;
+}
+div.wrapper ul li{
+	float:left;
+	width:120px;
+	height:100%;
+	-webkit-transition:width 0.5s ease-out;
+}
+div.wrapper ul li:hover{
+	width:400px;
+}
+div.wrapper ul:hover li:not(:hover){
+	width:50px;
+}
+div.wrapper ul li a img{
+	width:400px;
+	height:250px;
+}
