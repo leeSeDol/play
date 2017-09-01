@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.main {
+  width: 600px;
+  height: 250px;
+  overflow: hidden;
+}
+.main li {
+  display: block;
+  width: 120px;
+  float: left;
+  position: relative;
+  -webkit-transition: all 0.5s ease-out;
+}
+.main li:hover {
+  width: 400px;
+}
+.main li a img {
+  width: 400px;
+  height: 250px;
+}
+.main:hover li:not(:hover) {
+  width: 50px;
+}
+
+/*# sourceMappingURL=style.css.map */
