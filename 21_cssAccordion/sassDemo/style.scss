@@ -1,0 +1,32 @@
+*{
+	margin:0;
+	padding:0;
+}
+.main{
+	width:600px;
+	height:250px;
+	overflow:hidden;
+	li{
+		display:block;
+		width:120px;
+		float:left;
+		position:relative;
+		-webkit-transition:all 0.5s ease-out;
+		&:hover{
+			width:400px;
+		}
+		a{
+			img{
+				width:400px;
+				height:250px;
+			}
+		}
+	}
+	&:hover{
+		li{
+			&:not(:hover){
+				width:50px;
+			}
+		}
+	}
+}
