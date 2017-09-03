@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>index</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="jquery.js"></script>
+	<script src="script.js"></script>
+</head>
+<body>
+	<a class="zoom_list" href="images/1.png">
+		<img class="zoom_image" src="images/0.jpg"  alt="">	
+	</a>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("img.zoom_image").jqueryzoom({
+		xzoom:250,
+		yzoom:250
+	});
+});
+</script>
+</body>
+</html>
