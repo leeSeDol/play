@@ -1,0 +1,20 @@
+*{
+	padding:0;
+	margin:0;
+}
+.zoom_list{
+	display:inline-block;
+}
+.zoom_div{
+	width:200px; 
+	height:200px; 
+	padding:3px; 
+	background:white; 
+	border:1px solid #cccccc; 
+	text-align:center; 
+	position:absolute; 
+	z-index:1000; 
+	left:0; 
+	top:0; 
+	overflow:hidden;
+}
