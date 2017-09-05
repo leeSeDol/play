@@ -1,0 +1,28 @@
+*{
+	padding:0;
+	margin:0;
+}
+.wrap{
+
+}
+.inner{
+	width:1366px;
+	height:672px;
+	display:block;
+}
+.inner1{
+	background:linear-gradient(to bottom right,#e43,#e67);
+}
+.inner2{
+	background:linear-gradient(to top left,#31c,#3b6);
+}
+.inner3{
+	background:linear-gradient(to bottom left,#fc0,#e43);
+}
+.inner4{
+	background:linear-gradient(to top right,#f86,#f63);
+}
+
+::-webkit-scrollbar{
+	width:0;
+}
