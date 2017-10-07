@@ -5,7 +5,6 @@ window.onload=function(){
 	var bar = left.getElementsByClassName('bar')[0];
 	var right = box.getElementsByClassName('right')[0];
 
-
 	right.innerHTML = parseInt(bg.clientWidth/left.clientWidth*100)+'%';
 	bar.onmousedown = function(event){
 		var myEvent = event||window.event;
